@@ -9,7 +9,7 @@ var nComputador = '';
         function jogar(){
             nJogador =  document.querySelector('#meuNumero').value;
 
-            nComputador = sortear(5);
+            nComputador = sortear(9);
             //mostar na tela os numeros escolhidos
            
 
@@ -33,8 +33,8 @@ var nComputador = '';
             }
             
 
-            if(!nJogador || nJogador > 5){
-                alert('ops!! Primeiro digite um numero de 0 a 5');
+            if(!nJogador || nJogador > 9){
+                alert('ops!! Primeiro digite um numero de 0 a 9');
                 return;
             }
 
