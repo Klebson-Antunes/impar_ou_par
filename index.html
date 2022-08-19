@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Impar ou Par</title>
+    <!--folha de estilos-->
+    <link rel="stylesheet" href="style.css">
+    <!--icone no navegador-->
+    <link rel="icon" href="mais-ou-menos.png">
+
+</head>
+<body>
+    <header>
+        <h1>Jogo do Par ou impar</h1>
+        <span class="subtitulo">Você </span>  
+        <span id="vs">vs  </span> 
+        <span  class="subtitulo">Maquina</span>
+        <p>Escolha um número de 0 até 5, em seguida marque impar ou par e clique no botão jogar.</p>
+    </header>
+
+    <div class="container">
+        <!--AREA DE ENTRADA DE DADOS-->
+        <div class="caixa">
+            <div id="selecao">
+                <h4>Digite um número de 0 a 5:</h4>
+                
+                <input type="number" name="" id="meuNumero" min="0" max="5" placeholder="0 a 5">
+                <br>
+                <br>
+                <label for=""><input type="radio" name="opecao" value="Você Escolheu Par" checked>Par</label>
+                
+                <label for=""><input type="radio" name="opecao" value="Você Escolheu Impar" >Impar</label>
+            </div>
+            <br>
+            <br>
+            <button onclick="jogar()">Jogar</button>
+        </div>
+        <!--AREA DE SAIDA DE DADOS-->
+        <div class="caixa2">
+            <div id="resultado">Resultado</div>
+            <hr>
+            <div id="escolhadamaquina"></div>
+            <div id="computador">
+                <h3>Máquina:</h3>
+            </div>
+            <hr>
+            <div id="escolhadojogador"></div>
+            <div id="voce">
+                <h3>Você:</h3>
+            </div>
+
+        </div>
+    
+    </div>
+
+    <!--SCRIPT PROCESSADOR DE DADOS-->
+    <script>
+        var nComputador = '';
+        var nJogador = '';
+        var minhaEscolha = '';
+        
+        function sortear(max){
+            return Math.floor(Math.random() * max);
+
+        }
+        function jogar(){
+            nJogador =  document.querySelector('#meuNumero').value;
+
+            nComputador = sortear(5);
+            //mostar na tela os numeros escolhidos
+           
+
+
+         
+            minhaEscolha = document.querySelector('input[type="radio"]:checked').value;
+
+            document.querySelector('#escolhadojogador').innerHTML = minhaEscolha
+            //mostrar na tela se maquina e par ou impar
+            if(minhaEscolha === 'Você Escolheu Par'){
+                document.querySelector('#escolhadamaquina').innerHTML = 'Maquina Ficou com Impar'
+            }else{
+                document.querySelector('#escolhadamaquina').innerHTML = 'Maquina Ficou com Par'
+
+            }
+            if(minhaEscolha === 'Você Escolheu Impar'){
+                document.querySelector('#escolhadamaquina').innerHTML = 'Maquina Ficou com Par'
+
+            }else{
+                document.querySelector('#escolhadamaquina').innerHTML = 'Maquina Ficou com Impar'
+            }
+            
+
+            if(!nJogador || nJogador > 5){
+                alert('ops!! Primeiro digite um numero de 0 a 5');
+                return;
+            }
+
+            nJogador = parseInt(nJogador);
+
+            var total = nJogador + nComputador;
+
+            var resultado = (total % 2 === 0) ? 'Par' : 'impar';
+            verificarResultado(resultado);
+            document.querySelector('#resultado').innerHTML = 'Você Escolheu o número: '+ nJogador +', '+ ' E a Maquina: ' + nComputador + ' Resultado = ' + total
+           
+
+            
+        }
+
+        function verificarResultado(resultado){
+            if(minhaEscolha === resultado){
+                document.querySelector('#voce').innerHTML = 'Parabens!! Você ganhou 👏';
+                document.querySelector('#computador').innerHTML = 'Maquina perdeu';
+
+            } else{
+                document.querySelector('#computador').innerHTML = 'maquina Ganhou';
+                document.querySelector('#voce').innerHTML = 'Você perdeu 😱';
+
+            }
+        }
+        
+       
+
+    </script>
+
+
+</body>
+</html>
