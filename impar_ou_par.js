@@ -42,7 +42,7 @@ var nComputador = '';
 
             var total = nJogador + nComputador;
 
-            var resultado = (total % 2 === 0) ? 'Par' : 'impar';
+            var resultado = (total % 2 === 0) ? 'Você Escolheu Par' : 'Você Escolheu Impar';
             verificarResultado(resultado);
             document.querySelector('#resultado').innerHTML = 'Você Escolheu o número: '+ nJogador +', '+ ' E a Maquina: ' + nComputador + ' Resultado = ' + total
            
